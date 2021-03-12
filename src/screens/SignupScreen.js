@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Col, Row, Button } from 'react-bootstrap';
+import { Card, Col, Row, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import loginImg from '../images/login.svg';
 
 const initialValues = {
   name : "",
@@ -56,42 +57,51 @@ function SignupScreen() {
   }
 
   return (
-    <div style={{ display:'flex', justifyContent:'center', alignItems:'center', height:'100vh' }}>
+    <div style={{ display:'flex', justifyContent:'center', alignItems:'center', minHeight:'100vh', backgroundImage:'linear-gradient(to right, #4895ef, white)' }}>
       <Row style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
-        <Col xs={7}>
-          <Card className="p-4 rounded" style={{ zIndex:'2', position:'relative' }}>
-            <h4 className="text-center">Sign Up</h4>
-            <form>
-              <div className="form-group">
-                <label htmlFor="name">Full Name :</label>
-                <input type="text" className="form-control" name="name" id="name" placeholder="Full Name" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                <small className="form-text text-danger">{errors.name}&nbsp;</small>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email address :</label>
-                <input type="email" className="form-control" name="email" id="email" placeholder="email" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                <small className="form-text text-danger">{errors.email}&nbsp;</small>
-              </div>
-              <div className="form-group">
-                <label htmlFor="mobile">Phone Number :</label>
-                <input type="text" className="form-control" name="mobile" id="mobile" placeholder="Phone Number" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                <small className="form-text text-danger">{errors.mobile}&nbsp;</small>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password :</label>
-                <input type="password" className="form-control" name="password" id="password" placeholder="Password" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                <small className="form-text text-danger">{errors.password}&nbsp;</small>
-              </div>
-              <div className="form-group">
-                <label htmlFor="cpassword">Password :</label>
-                <input type="password" className="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                <small className="form-text text-danger">{errors.cpassword}&nbsp;</small>
-              </div>
-             </form>
-             <div style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
-              <Button className="btn btn-primary my-2"  onClick={()=>validate()}>Submit</Button>
-             </div>
-             <Link className="text-center" to="/login">Sign In</Link>
+        <Col xs={10} md={8}>
+          <Card className="p-4" style={{ zIndex:'2', position:'relative', border:'solid 2px #4895ef', borderRadius:'20px', minHeight:'600px' }}>
+            <Row >
+              <Col className="d-none d-md-block" md={6} style={{display:'flex', justifyContent:'center', alignItems:'center', verticalAlign:'middle', marginTop:'auto', marginBottom:'auto'}}>
+                <Image src={loginImg} fluid />
+              </Col>
+              <Col xs={12} md={6}>
+                <h4 className="text-center">Sign Up</h4>
+                <form>
+                  <div className="form-group" style={{marginBottom:'0px'}}>
+                    <label htmlFor="name" style={{marginBottom:'0px'}}>Full Name :</label>
+                    <input type="text" className="form-control" name="name" id="name" placeholder="Full Name" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                    <small className="form-text text-danger text-center">{errors.name}&nbsp;</small>
+                  </div>
+                  <div className="form-group" style={{marginBottom:'0px'}}>
+                    <label htmlFor="email" style={{marginBottom:'0px'}}>Email address :</label>
+                    <input type="email" className="form-control" name="email" id="email" placeholder="email" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                    <small className="form-text text-danger text-center">{errors.email}&nbsp;</small>
+                  </div>
+                  <div className="form-group" style={{marginBottom:'0px'}}>
+                    <label htmlFor="mobile" style={{marginBottom:'0px'}}>Phone Number :</label>
+                    <input type="text" className="form-control" name="mobile" id="mobile" placeholder="Phone Number" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                    <small className="form-text text-danger text-center">{errors.mobile}&nbsp;</small>
+                  </div>
+                  <div className="form-group" style={{marginBottom:'0px'}}>
+                    <label htmlFor="password" style={{marginBottom:'0px'}}>Password :</label>
+                    <input type="password" className="form-control" name="password" id="password" placeholder="Password" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                    <small className="form-text text-danger text-center">{errors.password}&nbsp;</small>
+                  </div>
+                  <div className="form-group" style={{marginBottom:'0px'}}>
+                    <label htmlFor="cpassword" style={{marginBottom:'0px'}}>Confirm Password :</label>
+                    <input type="password" className="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                    <small className="form-text text-danger text-center">{errors.cpassword}&nbsp;</small>
+                  </div>
+                </form>
+                <div style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
+                  <Button className="btn btn-primary my-2"  onClick={()=>validate()}>Submit</Button>
+                </div>
+                <Row className="text-center">
+                  <Link to="/login" style={{width:'100%'}}>Sign In</Link>
+                </Row>
+              </Col>
+            </Row>
           </Card>
         </Col>
       </Row>

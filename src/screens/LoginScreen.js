@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import loginImg from '../images/login.svg';
 
 const initialValues = {
   email:'',
@@ -21,25 +22,37 @@ function LoginScreen() {
   }
 
   return (
-    <div style={{ display:'flex', justifyContent:'center', alignItems:'center', height:'100vh' }}>
+    <div style={{ display:'flex', justifyContent:'center', alignItems:'center', minHeight:'100vh', backgroundImage:'linear-gradient(to right, #4895ef, white)' }}>
       <Row style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
-        <Col xs={7}>
-          <Card className="p-4 rounded" style={{ zIndex:'2', position:'relative' }}>
-            <h5 className="text-center">Login</h5>
-             <form>
-               <div className="form-group">
-                 <label htmlFor="email">Email address :</label>
-                 <input type="email" className="form-control" name="email" id="email" placeholder="email" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                 <small className="form-text text-danger" style={{ zIndex: '-4' }}></small>
-               </div>
-               <div className="form-group">
-                 <label htmlFor="password">Password :</label>
-                 <input type="password" className="form-control" name="password" id="password" placeholder="password" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
-                 <small className="form-text text-danger"></small>
-               </div>
-             </form>
-             <small className="text-danger text-center">error</small>
-             <Link className="text-center mt-2" to='/register'>Sign Up</Link>
+        <Col xs={10} md={8}>
+          <Card className="p-4" style={{ zIndex:'2', position:'relative', border:'solid 2px #4895ef', borderRadius:'20px'}}>
+            <Row style={{height:'100%'}}>
+              <Col className="d-none d-md-block" md={6} style={{display:'flex', justifyContent:'center', alignItems:'center', verticalAlign:'middle', marginTop:'auto', marginBottom:'auto', height:'100%'}}>
+                <Image src={loginImg} fluid />
+              </Col>
+              <Col xs={12} md={6}>
+              <h5 className="text-center">Login</h5>
+              <form>
+                <div className="form-group">
+                  <label htmlFor="email">Email address :</label>
+                  <input type="email" className="form-control" name="email" id="email" placeholder="email" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                  <small className="form-text text-danger" style={{ zIndex: '-4' }}></small>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password :</label>
+                  <input type="password" className="form-control" name="password" id="password" placeholder="password" style={{ width:'100%' }} onChange={(e)=>{handleInputChange(e)}} />
+                  <small className="form-text text-danger"></small>
+                </div>
+                <div style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
+                  <Button className="btn btn-primary my-2">Login</Button>
+                </div>
+              </form>
+              <Row className="text-danger text-center"><span style={{width:'100%', textAlign:'center'}}>&nbsp;</span></Row>
+              <Row className="text-center">
+                  <Link to="/register" style={{width:'100%'}}>Sign Up</Link>
+                </Row>
+              </Col>
+            </Row>
           </Card> 
         </Col>
       </Row> 
