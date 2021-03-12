@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Col, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import loginImg from '../images/login.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../actions/loginActions';
 
 const initialValues = {
   email:'',
@@ -12,6 +14,18 @@ const initialValues = {
 function LoginScreen() {
 
   const [values, setValues] = useState(initialValues);
+  const [message, setMessage] = useState("");
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const dispatch = useDispatch();
+
+  const handleClick = ()=>{
+    if(values.email === '' || values.password === ''){
+      setMessage('Please fill all the fields');
+    } else{
+      dispatch(login(values.email, values.password));
+    }
+  }
 
   const handleInputChange = (e)=>{
     const {name,value} = e.target;
@@ -44,10 +58,10 @@ function LoginScreen() {
                   <small className="form-text text-danger"></small>
                 </div>
                 <div style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
-                  <Button className="btn btn-primary my-2">Login</Button>
+                  <Button className="btn btn-primary my-2" onClick={() => handleClick()}>Login</Button>
                 </div>
               </form>
-              <Row className="text-danger text-center"><span style={{width:'100%', textAlign:'center'}}>&nbsp;</span></Row>
+              <Row className="text-danger text-center"><span style={{width:'100%', textAlign:'center'}}>{message}&nbsp;</span></Row>
               <Row className="text-center">
                   <Link to="/register" style={{width:'100%'}}>Sign Up</Link>
                 </Row>
