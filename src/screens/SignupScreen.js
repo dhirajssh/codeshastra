@@ -60,7 +60,7 @@ function SignupScreen() {
     <div style={{ display:'flex', justifyContent:'center', alignItems:'center', minHeight:'100vh', backgroundImage:'linear-gradient(to right, #4895ef, white)' }}>
       <Row style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
         <Col xs={10} md={8}>
-          <Card className="p-4" style={{ zIndex:'2', position:'relative', border:'solid 2px #4895ef', borderRadius:'20px', minHeight:'600px' }}>
+          <Card className="p-4" style={{ zIndex:'2', position:'relative', borderRadius:'20px', minHeight:'600px' }}>
             <Row >
               <Col className="d-none d-md-block" md={6} style={{display:'flex', justifyContent:'center', alignItems:'center', verticalAlign:'middle', marginTop:'auto', marginBottom:'auto'}}>
                 <Image src={loginImg} fluid />
