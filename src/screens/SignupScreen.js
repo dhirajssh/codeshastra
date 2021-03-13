@@ -3,6 +3,8 @@ import { Card, Col, Row, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import loginImg from '../images/login.svg';
 import { states } from '../states';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../actions/loginActions';
 
 const initialValues = {
   name : "",
@@ -16,10 +18,12 @@ const initialValues = {
 
 function SignupScreen() {
 
-  console.log(states);
+  const userRegister = useSelector((state) => state.userRegister);
+  const dispatch = useDispatch();
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({password:''});
   const [districts, setDistricts] = useState();
+  const [message, setMessage] = useState('');
 
   const validate = (fieldValues = values) => {
 
@@ -54,6 +58,31 @@ function SignupScreen() {
       ...temp
   })
   },[values.cpassword])
+
+  const handleClick = () => {
+    validate();
+    if(errors.name === "" && errors.email === "" && errors.mobile === '' && errors.password === '' && errors.cpassword === '' && errors.state === '' && errors.district === ''){
+      dispatch(register(values));
+      console.log(values);
+    }
+  }
+
+  useEffect(()=>{
+    if(userRegister.data){
+      setMessage(userRegister.data.data.msg);
+    }
+  },[userRegister])
+
+  const Message = ()=>{
+    if(userRegister.data){
+      if(userRegister.data.failed){
+        setMessage(userRegister.data.failed);
+      }
+      else if(userRegister.data.msg){
+        setMessage(userRegister.data.msg);
+      }
+    }
+  }
   
   const handleInputChange = (e)=>{
     const {name,value} = e.target;
@@ -68,7 +97,6 @@ function SignupScreen() {
         }
       })
     }
-    console.log(values);
     validate({ [name]: value })
   }
   return (
@@ -141,7 +169,12 @@ function SignupScreen() {
                   </div>
                 </form>
                 <div style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
-                  <Button className="btn btn-primary my-2"  onClick={()=>validate()}>Submit</Button>
+                  <small className="text-success">
+                    {userRegister.error ? userRegister.error:message}
+                  </small>
+                </div>
+                <div style={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%' }}>
+                  <Button className="btn btn-primary my-2"  onClick={()=>handleClick()}>Submit</Button>
                 </div>
                 <Row className="text-center">
                   <Link to="/login" style={{width:'100%'}}>Login</Link>

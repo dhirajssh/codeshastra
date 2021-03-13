@@ -4,16 +4,20 @@ import { Form, Col, Button } from 'react-bootstrap';
 import Header from '../components/Navbar';
 import styled from 'styled-components';
 
+const initialValues = {
+    name:'',
+    phone:'',
+    brand:'',
+    date:'',
+    address:'',
+    pincode:'',
+    description:'',
+    image:'',
+}
+
 const FoundScreen = () => {
 
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState(0);
-    const [brand, setBrand] = useState('');
-    const [date, setDate] = useState('');
-    const [address, setAddress] = useState('');
-    const [pincode, setPincode] = useState(0);
-    const [description, setDescription] = useState('');
-    const [image, setImage] = useState('');
+    const [values, setValues] = useState(initialValues);
 
     // const uploadFileHandler = async (e) => {
     //     const file = e.target.files[0];
@@ -40,6 +44,16 @@ const FoundScreen = () => {
     //     }
     //   };
 
+    const handleInputChange = (e)=>{
+        const {name,value} = e.target;
+        setValues({
+          ...values,
+          [name]: value
+        })
+        console.log(values);
+        // validate({ [name]: value })
+      }
+
     return (
     <>
         <Header/>
@@ -53,17 +67,19 @@ const FoundScreen = () => {
                     <Form.Control 
                         type="text" 
                         placeholder="Enter name" 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}/>
+                        value={values.name}
+                        name="name"
+                        onChange={(e)=>{handleInputChange(e)}}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPhone">
                     <Form.Label>Phone No</Form.Label>
                     <Form.Control 
-                        type="number" 
+                        type="text" 
                         placeholder="Enter phone no" 
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}/>
+                        value={values.phone}
+                        name="phone"
+                        onChange={(e)=>{handleInputChange(e)}}/>
                     </Form.Group>
                 </Form.Row>
 
@@ -71,10 +87,11 @@ const FoundScreen = () => {
                 <Form.Group as={Col} controlId="formGridBrand">
                     <Form.Label>Brand of item</Form.Label>
                     <Form.Control 
-                        type="number" 
+                        type="text" 
                         placeholder="Enter brand" 
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}/>
+                        value={values.brand}
+                        name="brand"
+                        onChange={(e)=>{handleInputChange(e)}}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridDate">
@@ -82,8 +99,9 @@ const FoundScreen = () => {
                     <Form.Control 
                         type="date" 
                         placeholder="Enter date" 
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}/>
+                        value={values.date}
+                        name="date"
+                        onChange={(e)=>{handleInputChange(e)}}/>
                     </Form.Group>
                 </Form.Row>
 
@@ -91,8 +109,9 @@ const FoundScreen = () => {
                     <Form.Label>Address where item was found</Form.Label>
                     <Form.Control 
                         placeholder="1234 Main St" 
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
+                        value={values.address}
+                        name="address"
+                        onChange={(e)=>{handleInputChange(e)}}
                         rows={2} />
                 </Form.Group>
 
@@ -109,8 +128,9 @@ const FoundScreen = () => {
                     <Form.Label>Pincode</Form.Label>
                     <Form.Control 
                         placeholder="Enter pincode" 
-                        value={pincode}
-                        onChange={(e) => setPincode(e.target.value)}/>
+                        value={values.pincode}
+                        name="pincode"
+                        onChange={(e)=>{handleInputChange(e)}}/>
                     </Form.Group>
                 </Form.Row>
                 
@@ -118,8 +138,9 @@ const FoundScreen = () => {
                     <Form.Label>Article Description</Form.Label>
                     <Form.Control 
                         placeholder="Enter description" 
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        value={values.description}
+                        name="description"
+                        onChange={(e)=>{handleInputChange(e)}}
                         rows={3} />
                 </Form.Group>
 

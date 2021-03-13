@@ -8,7 +8,7 @@ import {
   USER_REGISTER_FAIL,
 } from '../constants/userConstants';
 
-const url = 'http://00666518765b.ngrok.io/api/token/';
+const url = 'http://3ada48da9e41.ngrok.io/api/token/';
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -16,15 +16,16 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_REQUEST,
     });
 
-    const data = await axios.post(
-      url,
-      {
+    const data = await axios({
+      method: "post",
+      url: 'http://47e6d1ed231c.ngrok.io/api/token/',
+      
         headers: {
           'Content-Type':'application/json',
         },
-        body:JSON.stringify({
-          email:email,
-          password:password
+        data:JSON.stringify({
+          "email":email,
+          "password":password
         })
       });
 
@@ -46,20 +47,20 @@ export const register = (values) => async (dispatch) => {
       type: USER_REGISTER_REQUEST,
     });
 
-    const data = await axios.post(
-      'http://djodhawat.pythonanywhere.com/auth/register/',
-      {
-        headers: {
-          'Content-Type':'application/json',
-        },
-        body:JSON.stringify({
-          emailid: values.email,
-          password: values.password,
-          firstname: values.name,
-          phonenumber: values.number,
-          state:values.state,
-          district: values.district,
-        })
+    const data = await axios({
+      method: "post",
+      url: 'http://47e6d1ed231c.ngrok.io/auth/register/',
+      headers: {
+        'Content-Type':'application/json',
+      },
+      data:JSON.stringify({
+        "emailid": values.email,
+        "password": values.password,
+        "firstname": values.name,
+        "phonenumber": values.mobile,
+        "state":values.state,
+        "district": values.district,
+      })
       });
     
       dispatch({
