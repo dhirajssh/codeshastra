@@ -8,12 +8,18 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import { userLoginReducer } from './reducers/loginReducer';
+import { userLoginReducer, userRegisterReducer } from './reducers/loginReducer';
 import ProductListReducer from './reducers/ProductReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   productList: ProductListReducer,
+  userRegister: userRegisterReducer,
+});
+
+const reducer = combineReducers({
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 
 const initialState = {};

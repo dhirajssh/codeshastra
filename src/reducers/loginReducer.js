@@ -23,7 +23,7 @@ export const userLoginReducer = (state = {}, action) => {
   }
 };
 
-export const RegisterReducer = (state = {}, action) => {
+export const userRegisterReducer = (state = {}, action) => {
   switch (action.type){
     case USER_REGISTER_REQUEST:
       console.log(action.payload);

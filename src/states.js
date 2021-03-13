@@ -1,4 +1,4 @@
-export const states = JSON.parse({  
+const temp = {  
   "states":[  
      {  
         "state":"Andhra Pradesh",
@@ -898,4 +898,6 @@ export const states = JSON.parse({
         ]
      }
   ]
-});
+}
+
+export const states = temp.states;
