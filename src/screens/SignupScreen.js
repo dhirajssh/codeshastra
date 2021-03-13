@@ -98,7 +98,7 @@ function SignupScreen() {
                   <Button className="btn btn-primary my-2"  onClick={()=>validate()}>Submit</Button>
                 </div>
                 <Row className="text-center">
-                  <Link to="/login" style={{width:'100%'}}>Sign In</Link>
+                  <Link to="/login" style={{width:'100%'}}>Login</Link>
                 </Row>
               </Col>
             </Row>
