@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Col, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import loginImg from '../images/login.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/loginActions';
+import { login, tokenPost } from '../actions/loginActions';
 
 const initialValues = {
   email:'',
@@ -13,11 +13,25 @@ const initialValues = {
 
 function LoginScreen() {
 
+  
+
   const [values, setValues] = useState(initialValues);
   const [message, setMessage] = useState("");
   const userLogin = useSelector((state) => state.userLogin);
 
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const url = window.location.href;
+    console.log(url);
+    let n = url.search("token=");
+    if(n!==-1){
+      n=n+6;
+      const token = url.substring(n, url.length);
+      console.log(token);
+      dispatch(tokenPost(token));
+    }
+  },[])
 
   const handleClick = ()=>{
     if(values.email === '' || values.password === ''){

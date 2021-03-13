@@ -75,4 +75,16 @@ export const register = (values) => async (dispatch) => {
     }
 
   }
-
+export const tokenPost = (token) => async (dispatch) => {
+  const data = await axios({
+    method: 'post',
+    url: 'http://6e8d903b1731.ngrok.io/auth/verify-account/',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      "token": token,
+    })
+  })
+  console.log(data);
+}
