@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
-import Header from '../components/Navbar'
-import Product from '../components/Products'
+import Header from '../components/Navbar';
+import Product from '../components/Products';
+import cocktail from '../images/coconut.svg';
 
 function HomeScreen() {
 
@@ -12,10 +13,10 @@ function HomeScreen() {
     <div>
       <Landing>
         <Header/>
-        <Text>Lost something? Don't worry! <br/>Sit back and have a cocktail while we help you find it.</Text>
+        <Text>Lost something? Don't worry!<br/>Sit back and have a cocktail while we help you find it.</Text>
         <FindButton>Find</FindButton>
         <ReportButton>Report</ReportButton>
-        <img src = "../images/Cocktail_Monochromatic.svg"></img>
+        <img src = {cocktail} style={{ position: 'absolute', right: '10vw', top: '25vh' }}></img>
       </Landing>
       <h1>Recently Reported</h1>
       <Product/>
