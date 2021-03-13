@@ -43,7 +43,7 @@ const FoundScreen = () => {
     return (
     <>
         <Header/>
-        <Image src="https://www.clarendonhills.us/ImageRepository/Document?documentID=609"></Image>
+        {/* <Image src="../images/phone.jpg"></Image> */}
         <div style={{ padding: '5rem 15rem' }}>
             <Heading>Enter Found Item Details</Heading>
             <FoundForm>
@@ -147,9 +147,9 @@ const FoundScreen = () => {
     text-align: center;
     margin-bottom: 3rem;
   `
-  const Image = styled.img `
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: -1
-  `
+//   const Image = styled.img `
+//     height: 100vh;
+//     width: 100vw;
+//     position: fixed;
+//     z-index: -1
+//   `
