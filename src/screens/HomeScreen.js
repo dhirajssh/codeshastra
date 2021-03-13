@@ -16,7 +16,9 @@ function HomeScreen() {
         <Link to="/found">
           <FindButton>Find</FindButton>
         </Link>
-        <ReportButton>Report</ReportButton>
+        <Link to="/search">
+          <ReportButton>Report</ReportButton>
+        </Link>
         <img src = {cocktail} style={{ position: 'absolute', right: '10vw', top: '25vh' }}></img>
       </Landing>
       <h1>Recently Reported</h1>
@@ -36,7 +38,7 @@ const Landing = styled.div `
 const Text = styled.p `
   font-size: 2rem;
   width: 50vw;
-  margin: 25vh 0 0 7vw;
+  padding: 35vh 0 0 7vw;
 `;
 
 const FindButton = styled(Button) `

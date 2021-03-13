@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import FoundScreen from './screens/FoundScreen';
+import SearchScreen from './screens/SearchScreen';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route component={LoginScreen} path="/login" />
         <Route component={SignupScreen} path="/register" />
         <Route component={FoundScreen} path="/found" />
+        <Route component={SearchScreen} path="/search" />
       </Switch>
     </div>
   );

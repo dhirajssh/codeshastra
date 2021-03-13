@@ -9,9 +9,11 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import { userLoginReducer } from './reducers/loginReducer';
+import ProductListReducer from './reducers/ProductReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
+  productList: ProductListReducer,
 });
 
 const initialState = {};

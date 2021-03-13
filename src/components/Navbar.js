@@ -31,18 +31,17 @@ export default Header;
 const Navs = styled(Navbar) `
   border-bottom: 1px solid #c6c6c6;
   padding: 1.2rem 2rem;
-  max-width: 100vw;
   background: #fff;
-  position: fixed;
   width: 100vw;
   z-index: 2;
+  max-width: 100vw !important;
 `
 
 const Loginlink = styled(Nav.Link) `
   background: #4895ef;
   color: #fff;
   border: 1px solid #4895ef;  
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 2rem !important;
   margin-right: 2rem;
 `
 
@@ -50,7 +49,7 @@ const Signuplink = styled(Nav.Link) `
   background: #fff;
   color: #4895ef;
   border: 1px solid #4895ef;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 2rem !important;
   margin-right: 2rem;
 `
 // 3f37c9
