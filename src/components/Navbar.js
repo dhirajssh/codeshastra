@@ -33,6 +33,9 @@ const Navs = styled(Navbar) `
   padding: 1.2rem 2rem;
   max-width: 100vw;
   background: #fff;
+  position: fixed;
+  width: 100vw;
+  z-index: 2;
 `
 
 const Loginlink = styled(Nav.Link) `

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import Header from '../components/Navbar';
@@ -7,14 +8,14 @@ import cocktail from '../images/coconut.svg';
 
 function HomeScreen() {
 
-  const [keyword, setKeyword] = useState('');
-
   return (
     <div>
       <Landing>
         <Header/>
         <Text>Lost something? Don't worry!<br/>Sit back and have a cocktail while we help you find it.</Text>
-        <FindButton>Find</FindButton>
+        <Link to="/found">
+          <FindButton>Find</FindButton>
+        </Link>
         <ReportButton>Report</ReportButton>
         <img src = {cocktail} style={{ position: 'absolute', right: '10vw', top: '25vh' }}></img>
       </Landing>
